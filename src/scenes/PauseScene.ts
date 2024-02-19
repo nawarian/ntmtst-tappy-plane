@@ -32,6 +32,15 @@ export class PauseScene extends Phaser.Scene {
       .on('down', () => {
         this.resumeGame();
       });
+    this.input.gamepad.on('down', (pad: any, btn: any, val: number) => {
+      // If pause button
+      if (btn.index === 9) {
+        this.resumeGame();
+      }
+    });
+    this.input.on('pointerdown', (pad: any, btn: any, val: number) => {
+      this.resumeGame();
+    });
   }
 
   resumeGame(): void {

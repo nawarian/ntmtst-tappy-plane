@@ -57,21 +57,25 @@ export class MainMenu extends Phaser.Scene {
 
     const bgm = this.sound.add('bgm-menu', { loop: true });
     bgm.play();
+
+    const startGameCallback = () => {
+      this.sound.play('sfx-pause');
+      this.tweens.add({
+        targets: bgm,
+        volume: 0,
+        duration: 1000,
+        onComplete: () => {
+          bgm.stop();
+          this.scene.launch('GameScene');
+          this.scene.stop('MainMenu');
+        },
+      });
+    };
     this.input.keyboard
       .addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
-      .on('down', () => {
-        this.sound.play('sfx-pause');
-        this.tweens.add({
-          targets: bgm,
-          volume: 0,
-          duration: 1000,
-          onComplete: () => {
-            bgm.stop();
-            this.scene.launch('GameScene');
-            this.scene.stop('MainMenu');
-          },
-        });
-      });
+      .on('down', startGameCallback);
+    this.input.on('pointerdown', startGameCallback);
+    this.input.gamepad.on('down', startGameCallback);
   }
 
   update(): void {}

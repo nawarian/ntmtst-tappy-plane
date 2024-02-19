@@ -49,16 +49,13 @@ export class GameScene extends Phaser.Scene {
 
     this.input.keyboard
       .addKey(Phaser.Input.Keyboard.KeyCodes.ESC)
-      .on('down', () => {
-        this.sound.play('sfx-pause');
-
-        this.sound
-          .get<Phaser.Sound.HTML5AudioSound>('bgm-gameplay')
-          .setVolume(0.3);
-
-        this.scene.pause('GameScene');
-        this.scene.launch('PauseScene');
-      });
+      .on('down', () => this.triggerPause());
+    this.input.gamepad.on('down', (pad: any, btn: any, val: number) => {
+      // If pause button
+      if (btn.index === 9) {
+        this.triggerPause();
+      }
+    });
 
     this.physics.add.collider(this.plane, this.obstacles, () => {
       this.gameOver();
@@ -71,7 +68,14 @@ export class GameScene extends Phaser.Scene {
     this.sound.add('bgm-gameplay', { loop: true }).play();
   }
 
-  preload(): void {}
+  triggerPause(): void {
+    this.sound.play('sfx-pause');
+
+    this.sound.get<Phaser.Sound.HTML5AudioSound>('bgm-gameplay').setVolume(0.3);
+
+    this.scene.pause('GameScene');
+    this.scene.launch('PauseScene');
+  }
 
   makePipes(): void {
     const posTopX = Phaser.Math.Between(
@@ -100,7 +104,14 @@ export class GameScene extends Phaser.Scene {
   update(_time: number, delta: number): void {
     const actionKey = this.keys.get('KEY_ACTION');
 
-    if (actionKey.isDown && actionKey.getDuration() < 100) {
+    const isActionPressed =
+      actionKey.isDown ||
+      this.input.gamepad?.pad1?.X ||
+      this.input.gamepad?.pad1?.Y ||
+      this.input.gamepad?.pad1?.A ||
+      this.input.gamepad?.pad1?.B ||
+      this.input.mousePointer.leftButtonDown();
+    if (isActionPressed && actionKey.getDuration() < 100) {
       this.plane.tap(delta);
     }
 

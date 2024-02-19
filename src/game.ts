@@ -19,6 +19,9 @@ window.addEventListener('load', () => {
     scene: [BootScene, MainMenu, GameScene, PauseScene],
     input: {
       keyboard: true,
+      gamepad: true,
+      touch: true,
+      mouse: true,
     },
     physics: {
       default: 'arcade',
