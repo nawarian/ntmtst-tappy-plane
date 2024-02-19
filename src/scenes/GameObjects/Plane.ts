@@ -18,6 +18,7 @@ export class Plane extends Phaser.GameObjects.Sprite {
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     this.getBody().setCollideWorldBounds(true);
+    this.getBody().setGravityY(1000);
   }
 
   preUpdate(_: number, delta: number): void {
