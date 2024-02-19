@@ -54,6 +54,8 @@ export class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.plane, this.ground, () => {
       this.gameOver();
     });
+
+    this.sound.add('bgm-gameplay', { loop: true }).play();
   }
 
   preload(): void {}
