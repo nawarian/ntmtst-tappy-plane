@@ -14,6 +14,12 @@ $ cd ntmtst-tappy-plane
 $ npm install
 ```
 
+Primeiro otimise os assets para produção usando o seguinte comando:
+
+```
+$ npm run optimise
+```
+
 Para iniciar o jogo em seu navegador rode o seguinte comando:
 
 ```

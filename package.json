@@ -19,7 +19,8 @@
   "scripts": {
     "build": "webpack --mode production --config webpack.config.js",
     "dev": "webpack --mode development && webpack serve --mode development",
-    "format": "prettier --write --config .prettierrc *.js src/**/*.ts src/*.ts"
+    "format": "prettier --write --config .prettierrc *.js src/**/*.ts src/*.ts",
+    "optimise": "./optimise.sh"
   },
   "author": "Níckolas Da Silva <nickolas@phpsp.org.br>",
   "engines": {

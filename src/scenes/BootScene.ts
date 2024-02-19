@@ -1,6 +1,6 @@
 import spritesheet from '@assets/tappyplane/Spritesheet/sheet.png';
 import atlas from '@assets/tappyplane/Spritesheet/sheet.xml';
-import gameplayBgm from '@assets/bomberman-bgm/09 Black City.mp3';
+import gameplayBgm from '@assets/bomberman-bgm/optimised/09 Black City.mp3';
 
 export class BootScene extends Phaser.Scene {
   constructor() {
