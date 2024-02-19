@@ -22,6 +22,17 @@ $ npm run dev
 
 O jogo ficará disponível em seu [localhost:8080](http://localhost:8080/)
 
+## Como criar uma build de produção
+
+Atualmente o projeto está no Github Pages, portanto basta atualizar os conteúdos
+da pasta `docs/` para atualizar a página de produção. Rode o seguinte comando:
+
+```
+$ npm run build
+```
+
+E faça o upload das alterações para o Github ou do conteúdo da pasta `docs/` para o itch.io.
+
 ## Licença
 
 O código do projeto `nawarian/ntmtst-tappy-plane` está disponível sob licença GPL-3.0. Você é
