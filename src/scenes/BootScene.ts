@@ -1,4 +1,5 @@
 import spritesheet from '@assets/tappyplane/Spritesheet/sheet.png';
+import atlas from '@assets/tappyplane/Spritesheet/sheet.xml';
 
 export class BootScene extends Phaser.Scene {
   constructor() {
@@ -6,7 +7,7 @@ export class BootScene extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.atlasXML('tappy-plane-sheet', spritesheet, '/assets/sheet.xml');
+    this.load.atlasXML('tappy-plane-sheet', spritesheet, atlas);
   }
 
   update(): void {

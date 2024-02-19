@@ -1,7 +1,6 @@
 const path = require('path');
 const htmlPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const copyPlugin = require('copy-webpack-plugin');
 
 const htmlPluginCfg = new htmlPlugin({
   template: path.resolve(__dirname, 'index.html'),
@@ -10,12 +9,6 @@ const htmlPluginCfg = new htmlPlugin({
 });
 
 const tsconfigPathsPluginCfg = new TsconfigPathsPlugin();
-
-const copyPluginCfg = new copyPlugin({
-  patterns: [
-    { from: 'assets/tappyplane/Spritesheet/*.xml', to: 'assets/[name].xml' },
-  ],
-});
 
 module.exports = (env, argv) => ({
   entry: './src/game.ts',
@@ -26,7 +19,7 @@ module.exports = (env, argv) => ({
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|svg)/i,
+        test: /\.(png|jpe?g|svg|xml)/i,
         loader: 'file-loader',
         options: {
           name: 'assets/[name].[ext]',
@@ -49,7 +42,7 @@ module.exports = (env, argv) => ({
       },
     ],
   },
-  plugins: [htmlPluginCfg, copyPluginCfg],
+  plugins: [htmlPluginCfg],
   devServer: {
     static: path.resolve(__dirname, './dist'),
     host: 'localhost',
