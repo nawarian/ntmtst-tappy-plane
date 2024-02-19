@@ -13,10 +13,4 @@ export class Obstacle extends Phaser.GameObjects.Sprite {
     getBody(): Phaser.Physics.Arcade.Body {
         return this.body as Phaser.Physics.Arcade.Body;
     }
-
-    preUpdate(time: number, delta: number): void {
-        if (this.x + this.width / 2 < 0) {
-            this.destroy(true);
-        }     
-    }
 }
