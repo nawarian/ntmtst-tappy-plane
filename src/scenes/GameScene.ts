@@ -6,6 +6,8 @@ export class GameScene extends Phaser.Scene {
   private plane: Plane;
   private obstacles: Phaser.GameObjects.Group;
   private ground: Phaser.GameObjects.Group;
+  private background: Phaser.GameObjects.Sprite;
+
   private keys: Map<string, Phaser.Input.Keyboard.Key>;
 
   constructor() {
@@ -15,6 +17,11 @@ export class GameScene extends Phaser.Scene {
   init(): void {}
 
   create(): void {
+    this.background = this.add
+      .sprite(0, 0, 'tappy-plane-sheet', 'background.png')
+      .setOrigin(0, 0)
+      .setScale(2, 2);
+
     this.plane = new Plane(this, 100, 100);
     this.obstacles = this.add.group({
       runChildUpdate: true,
