@@ -47,10 +47,12 @@ export class GameScene extends Phaser.Scene {
       ],
     ]);
 
-    this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC).on('down', () => {
-      this.scene.pause('GameScene');
-      this.scene.launch('PauseScene');
-    });
+    this.input.keyboard
+      .addKey(Phaser.Input.Keyboard.KeyCodes.ESC)
+      .on('down', () => {
+        this.scene.pause('GameScene');
+        this.scene.launch('PauseScene');
+      });
 
     this.physics.add.collider(this.plane, this.obstacles, () => {
       this.gameOver();

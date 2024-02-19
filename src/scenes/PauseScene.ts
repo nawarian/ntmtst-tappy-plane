@@ -21,13 +21,17 @@ export class PauseScene extends Phaser.Scene {
       this.cameras.main.centerX - totalWidth / 2 + 20,
       this.cameras.main.centerY,
     );
-    
-    this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC).on('down', () => {
-      this.resumeGame();
-    });
-    this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE).on('down', () => {
-      this.resumeGame();
-    });
+
+    this.input.keyboard
+      .addKey(Phaser.Input.Keyboard.KeyCodes.ESC)
+      .on('down', () => {
+        this.resumeGame();
+      });
+    this.input.keyboard
+      .addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+      .on('down', () => {
+        this.resumeGame();
+      });
   }
 
   resumeGame(): void {
