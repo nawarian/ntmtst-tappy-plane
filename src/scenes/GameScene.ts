@@ -1,7 +1,9 @@
-import { Plane } from "./GameObjects/Plane";
+import { Obstacle } from './GameObjects/Obstacle';
+import { Plane } from './GameObjects/Plane';
 
 export class GameScene extends Phaser.Scene {
   private plane: Plane;
+  private obstacles: Phaser.GameObjects.Group;
   private keys: Map<string, Phaser.Input.Keyboard.Key>;
 
   constructor() {
@@ -12,9 +14,17 @@ export class GameScene extends Phaser.Scene {
 
   create(): void {
     this.plane = new Plane(this, 100, 100);
+    this.add.group({
+      runChildUpdate: true,
+      classType: Obstacle,
+      maxSize: 5,
+    });
 
     this.keys = new Map([
-      ['KEY_ACTION', this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)],
+      [
+        'KEY_ACTION',
+        this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE),
+      ],
     ]);
   }
 
