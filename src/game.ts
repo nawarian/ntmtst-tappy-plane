@@ -2,6 +2,7 @@ import 'phaser';
 import { BootScene } from '@scenes/BootScene';
 import { GameScene } from '@scenes/GameScene';
 import { PauseScene } from '@scenes/PauseScene';
+import { MainMenu } from '@scenes/MainMenu';
 
 export class Game extends Phaser.Game {
   constructor(config: Phaser.Types.Core.GameConfig) {
@@ -15,7 +16,7 @@ window.addEventListener('load', () => {
     height: 812,
     type: Phaser.AUTO,
     parent: 'game',
-    scene: [BootScene, GameScene, PauseScene],
+    scene: [BootScene, MainMenu, GameScene, PauseScene],
     input: {
       keyboard: true,
     },
