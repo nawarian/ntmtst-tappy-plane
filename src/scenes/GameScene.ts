@@ -50,6 +50,12 @@ export class GameScene extends Phaser.Scene {
     this.input.keyboard
       .addKey(Phaser.Input.Keyboard.KeyCodes.ESC)
       .on('down', () => {
+        this.sound.play('sfx-pause');
+
+        this.sound
+          .get<Phaser.Sound.HTML5AudioSound>('bgm-gameplay')
+          .setVolume(0.3);
+
         this.scene.pause('GameScene');
         this.scene.launch('PauseScene');
       });

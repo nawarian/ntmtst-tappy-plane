@@ -35,6 +35,8 @@ export class PauseScene extends Phaser.Scene {
   }
 
   resumeGame(): void {
+    this.sound.play('sfx-resume');
+    this.sound.get<Phaser.Sound.HTML5AudioSound>('bgm-gameplay').setVolume(1);
     this.scene.stop('PauseScene');
     this.scene.resume('GameScene');
   }
