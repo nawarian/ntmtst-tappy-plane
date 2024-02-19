@@ -1,6 +1,4 @@
-import phaserImg from '@assets/phaser.png';
-import particleImg from '@assets/particle.png';
-import { TEXTURE_KEY as PHASER_TEXTURE_KEY } from '@objects/PhaserImg';
+import spritesheet from '@assets/tappyplane/Spritesheet/sheet.png';
 
 export class BootScene extends Phaser.Scene {
   constructor() {
@@ -8,8 +6,7 @@ export class BootScene extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.image(PHASER_TEXTURE_KEY, phaserImg);
-    this.load.image('particle', particleImg);
+    this.load.atlasXML('tappy-plane-sheet', spritesheet, '/assets/sheet.xml');
   }
 
   update(): void {

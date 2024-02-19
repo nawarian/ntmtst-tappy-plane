@@ -24,12 +24,12 @@ window.addEventListener('load', () => {
         gravity: {
           y: 1000,
         },
-        debug: false,
+        debug: true,
       },
     },
     backgroundColor: '#222',
     render: {
-      pixelArt: true,
+      pixelArt: false,
       antialias: false,
     },
   };

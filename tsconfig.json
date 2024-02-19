@@ -7,7 +7,6 @@
     "baseUrl": ".",
     "paths": {
       "@assets/*": ["./assets/*"],
-      "@maps/*": ["./maps/*"],
       "@scenes/*": ["./src/scenes/*"],
       "@objects/*": ["./src/objects/*"],
       "@utils/*": ["./src/utils/*"]
