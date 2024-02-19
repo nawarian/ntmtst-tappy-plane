@@ -10,10 +10,10 @@ const htmlPluginCfg = new htmlPlugin({
 
 const tsconfigPathsPluginCfg = new TsconfigPathsPlugin();
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: './src/game.ts',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, argv.mode === 'production' ? 'docs' : 'dist'),
     filename: 'bundle.js',
   },
   module: {
@@ -55,4 +55,4 @@ module.exports = {
     extensions: ['.ts', '.js'],
     plugins: [tsconfigPathsPluginCfg],
   },
-};
+});
